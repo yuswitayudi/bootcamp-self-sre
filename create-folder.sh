@@ -16,7 +16,11 @@ if [ ! -d "$base_folder" ]; then
 fi
 
 # Prompt the user for the current day number
-read -p "Enter the current day number (e.g., 5): " current_day
+# read -p "Enter the current day number (e.g., 5): " current_day
+last_day=$(ls | sort -n -t '-' -k 2 | awk -F '-' '{print $2}' | tail -1)
+echo "Last day found: $last_day"
+current_day=$((last_day + 1))
+echo "Current day will be: $current_day"
 
 # Validate the day number (optional, but good practice)
 if ! [[ "$current_day" =~ ^[0-9]+$ ]]; then

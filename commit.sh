@@ -11,7 +11,10 @@ commit_prefix="bootcamp self" # Prefix for your commit message
 
 # Get the current day number (you'll need to manually update this for each day)
 # **IMPORTANT: You will need to edit the 'current_day' variable below for each day.**
-read -p "Enter the current bootcamp day: " current_day
+last_day=$(ls | sort -n -t '-' -k 2 | awk -F '-' '{print $2}' | tail -1)
+echo "Last day found: $last_day"
+current_day=$((last_day + 1))
+echo "Current day will be: $current_day"
 
 # Construct the commit message
 commit_message="${commit_prefix} - day ${current_day}"
