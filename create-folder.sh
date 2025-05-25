@@ -20,7 +20,13 @@ fi
 last_day=$(ls | sort -n -t '-' -k 2 | awk -F '-' '{print $2}' | tail -1)
 echo "Last day found: $last_day"
 current_day=$((last_day + 1))
-echo "Current day will be: $current_day"
+# Pad with zero if less than 10
+if [ "$current_day" -lt 10 ]; then
+  day_str=$(printf "%02d" "$current_day")
+else
+  day_str="$current_day"
+fi
+echo "Current day will be: $day_str"
 
 # Validate the day number (optional, but good practice)
 if ! [[ "$current_day" =~ ^[0-9]+$ ]]; then
@@ -35,7 +41,7 @@ read -p "Enter the topic name (e.g., lists-introduction): " topic_name
 sanitized_topic=$(echo "$topic_name" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
 
 # Construct the new folder name
-new_folder_name="day-${current_day}-${sanitized_topic}"
+new_folder_name="day-${day_str}-${sanitized_topic}"
 
 # Construct the full path to the new folder
 new_folder_path="$base_folder/$new_folder_name"
