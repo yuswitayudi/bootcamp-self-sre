@@ -1,5 +1,0 @@
-2025-05-26 08:00:30 ERROR Failed to connect to database 'prod_db': Connection refused
-2025-05-26 08:01:00 ERROR API gateway timeout for request /api/v1/data from 10.0.0.50
-2025-05-26 08:01:40 ERROR Disk full on /var/log for 'db-server-02'
-2025-05-26 08:00:15 WARNING Disk usage high on /dev/sda1 (85%)
-2025-05-26 08:01:10 WARNING CPU utilization spike (95%) on server 'web-01'
